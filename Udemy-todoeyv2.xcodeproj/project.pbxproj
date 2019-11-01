@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B55572C236CB5E200640859 /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55572B236CB5E200640859 /* item.swift */; };
 		3B5624CD236B5B2D00DA5562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5624CC236B5B2D00DA5562 /* AppDelegate.swift */; };
 		3B5624CF236B5B2D00DA5562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5624CE236B5B2D00DA5562 /* SceneDelegate.swift */; };
 		3B5624D1236B5B2D00DA5562 /* TodoeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5624D0236B5B2D00DA5562 /* TodoeyViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B55572B236CB5E200640859 /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
 		3B5624C9236B5B2D00DA5562 /* Udemy-todoeyv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Udemy-todoeyv2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5624CC236B5B2D00DA5562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B5624CE236B5B2D00DA5562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B55572D236CB5E600640859 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B55572B236CB5E200640859 /* item.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		3B55572E236CB60900640859 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3B5624D0236B5B2D00DA5562 /* TodoeyViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3B55572F236CB63900640859 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B5624D2236B5B2D00DA5562 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3B555730236CB6BB00640859 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3B5624D5236B5B2E00DA5562 /* Assets.xcassets */,
+				3B5624D7236B5B2E00DA5562 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		3B5624C0236B5B2D00DA5562 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +91,13 @@
 		3B5624CB236B5B2D00DA5562 /* Udemy-todoeyv2 */ = {
 			isa = PBXGroup;
 			children = (
-				3B5624CC236B5B2D00DA5562 /* AppDelegate.swift */,
-				3B5624CE236B5B2D00DA5562 /* SceneDelegate.swift */,
-				3B5624D0236B5B2D00DA5562 /* TodoeyViewController.swift */,
-				3B5624D2236B5B2D00DA5562 /* Main.storyboard */,
-				3B5624D5236B5B2E00DA5562 /* Assets.xcassets */,
-				3B5624D7236B5B2E00DA5562 /* LaunchScreen.storyboard */,
 				3B5624DA236B5B2E00DA5562 /* Info.plist */,
+				3B555730236CB6BB00640859 /* Supporting Files */,
+				3B5624CC236B5B2D00DA5562 /* AppDelegate.swift */,
+				3B55572E236CB60900640859 /* Controllers */,
+				3B55572D236CB5E600640859 /* Data Model */,
+				3B55572F236CB63900640859 /* Views */,
+				3B5624CE236B5B2D00DA5562 /* SceneDelegate.swift */,
 			);
 			path = "Udemy-todoeyv2";
 			sourceTree = "<group>";
@@ -138,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B55572C236CB5E200640859 /* item.swift in Sources */,
 				3B5624D1236B5B2D00DA5562 /* TodoeyViewController.swift in Sources */,
 				3B5624CD236B5B2D00DA5562 /* AppDelegate.swift in Sources */,
 				3B5624CF236B5B2D00DA5562 /* SceneDelegate.swift in Sources */,
