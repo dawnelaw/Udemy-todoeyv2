@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoeyViewController: UITableViewController {
     
+  
     var itemArray = [Item]()
     
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
         //let defaults = UserDefaults.standard
     
@@ -20,24 +22,12 @@ class TodoeyViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
 
         
-        print(dataFilePath)
-      
-//        let newItem = Item()
-//        newItem.title = "Find Mike"
-//        itemArray.append(newItem)
-//
-//        let newItem2 = Item()
-//        newItem2.title = "Buy Eggos"
-//        itemArray.append(newItem2)
-//
-//        let newItem3 = Item()
-//        newItem3.title = "Destroy Demogoron"
-//        itemArray.append(newItem3)
-
         loadItems()
-        
+      
     }
 
     //MARK - Tableview Datasource Methods
@@ -63,11 +53,11 @@ class TodoeyViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-   //     print("row: \(indexPath.row)")
-   //     print(itemArray[indexPath.row])
-        
-       // tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+//        context.delete(itemArray[indexPath.row])
+//        itemArray.remove(at: indexPath.row)
+       
+         // tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         //Set to opposite
         
         saveItems()
@@ -86,9 +76,10 @@ class TodoeyViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
-        
-            let newItem = Item()
+            
+            let newItem = Item(context: self.context)
             newItem.title = textField.text!
+            newItem.done = false
             
             self.itemArray.append(newItem)
             
@@ -112,28 +103,30 @@ class TodoeyViewController: UITableViewController {
 
     func saveItems() {
 
-         let encoder = PropertyListEncoder()
+
          do {
-             let data = try encoder.encode(itemArray)
-             try data.write(to: dataFilePath!)
+            try context.save()
          } catch {
-             print("Error encoding item array, \(error)")
+             print("Error saving context \(error)")
          }
         
          self.tableView.reloadData()
         
     }
     
-    func loadItems() {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        if let data = try? Data(contentsOf: dataFilePath!) {
-            let decoder = PropertyListDecoder()
-            do {
-                itemArray = try decoder.decode([Item].self, from: data)
-            } catch {
-                print("Error decoding item array, \(error)")
-            }
+    }
+    func loadItems() {
+
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            itemArray = try context.fetch(request)  //an array of items
+        } catch {
+            print("Error fetching data from contect \(error)")
         }
     }
+
+    
 }
 
